@@ -21,7 +21,7 @@ public class MemberService {
 
     public Long join(Member member){
         //같은 이름의 회원 x
-        Optional<Member> result = memberRepository.finalByName(member.getName());
+        Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m -> {
             throw new IllegalStateException("이미 존재하는 회원입니다");
         });
